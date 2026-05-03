@@ -1,0 +1,41 @@
+{
+  "name": "educreds-trust-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EduCreds intelligence layer (trust/governance AI agent) providing analysis and advisory APIs.",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/tests/**/*.test.js",
+    "start": "node dist/server.js",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@google/genai": "^1.40.0",
+    "@mistralai/mistralai": "^1.14.0",
+    "axios": "^1.7.9",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "html-to-text": "^9.0.5",
+    "openai": "^4.67.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
+    "eslint": "^9.18.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,26 @@
+services:
+  trust_agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: educreds_trust_agent
+    env_file:
+      - .env
+    ports:
+      - "3010:3010"
+    restart: unless-stopped
+    working_dir: /app
+    command: ["npm", "start"]
+    networks:
+      - educreds-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3010/api/trust-agent/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  educreds-network:
+    name: educreds-network
+    external: true
